@@ -13,11 +13,8 @@ SELECT
     REGION,
     WAREHOUSE_NAME,
     
-    {% if is_incremental() %}
-        ingestion_ts
-    {% else %}
-        CURRENT_TIMESTAMP AS ingestion_ts
-    {% endif %}
+    CURRENT_TIMESTAMP AS INGESTION_TS
+    
 
     from {{src.database}}.{{target.schema}}_{{src.schema}}.{{src.identifier}}
 
