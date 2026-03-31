@@ -101,7 +101,7 @@ models:
                 values: ['Petrol', 'Diesel', 'Electric', 'Hybrid']
               config:
                 description: "Checks fuel_type values are limited to the expected set."
-  - name: FACT_CUSTOMER_ORDER
+  - name: fact_customer_order
     description: >
       Fact table recording transactional customer order details including quantities, pricing, warehouse, and location information.
     columns:
@@ -130,7 +130,7 @@ models:
       - name: SNAPSHOT_TS
         description: "Timestamp when the snapshot record was created."
 
-  - name: DIM_ITEM
+  - name: dim_item
     description: >
       Dimension table for item metadata including fuel classification, variant info, and category tagging.
       Sourced from the item_inventory_snapshot with current records only.
@@ -156,7 +156,7 @@ models:
       - name: VEHICLE_TYPE
         description: "Classification of vehicle type (Heavy, Light, Other) based on category."
 
-  - name: DIM_CUSTOMER
+  - name: dim_customer
     description: >
       Dimension table with enriched customer data derived from current customer orders.
       Used for segmentation, churn analysis, and customer profiling.
@@ -172,7 +172,7 @@ models:
       - name: CITY_NAME
         description: "Customer's city of residence."
 
-  - name: DIM_DATE
+  - name: dim_date
     description: >
       Standard date dimension table supporting time-based slicing and reporting.
       Generates dates from minimum order date up to the current date.
@@ -192,7 +192,7 @@ models:
       - name: WEEK_START_DATE
         description: "Start date of the week containing the date."
 
-  - name: DIM_WAREHOUSE
+  - name: dim_warehouse
     description: >
       Dimension table containing standardized warehouse metadata.
       Extracted from silver layer, capturing latest warehouse info per location.
