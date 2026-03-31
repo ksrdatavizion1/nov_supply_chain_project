@@ -39,19 +39,19 @@ models:
   my_new_project:
     raw:
       +materialized: table
-      +database: supply_chain
+      +database: "{{ target.database }}"
       +schema: raw
     silver:
       +materialized: table
-      +database: supply_chain
+      +database: "{{ target.database }}"
       +schema: silver
     gold:
       +materialized: table
-      +database: supply_chain
+      +database: "{{ target.database }}"
       +schema: gold
 seeds: 
   my_new_project: 
-    warehouse_locations:
+    warehouse_location:
       +database: "{{ target.database }}"
       +schema: raw
       +tags: [raw]
@@ -89,3 +89,9 @@ seeds:
                 SELECT COUNT(*) FROM {{ generate_schema_name('raw', this) }}.WAREHOUSE_LOCATIONS
               )
           )
+snapshots:
+  my_new_project:
+    customer:
+      +schema: silver
+    inventory:
+      +schema: silver
