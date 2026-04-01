@@ -80,13 +80,13 @@ seeds:
             CURRENT_TIMESTAMP,
             'SUCCESS',
             'Seed loaded via dbt seed'
-          FROM {{ generate_schema_name('raw', this) }}.WAREHOUSE_LOCATIONS
+          FROM {{ generate_schema_name('raw', this) }}.WAREHOUSE_LOCATION
           WHERE NOT EXISTS (
             SELECT 1
             FROM AUDIT.MODEL_EXECUTION_LOG
             WHERE model_name = 'warehouse_locations'
               AND row_count = (
-                SELECT COUNT(*) FROM {{ generate_schema_name('raw', this) }}.WAREHOUSE_LOCATIONS
+                SELECT COUNT(*) FROM {{ generate_schema_name('raw', this) }}.WAREHOUSE_LOCATION
               )
           )
 snapshots:
